@@ -1,4 +1,4 @@
-# DynamicBiz Security Awareness Application
+# Lets Fly LK Aware Application
 
 A comprehensive, role-based security awareness and training platform designed for DynamicBiz IT Solutions. This application provides interactive training modules, quizzes, mini-games, and policy management tailored to different organizational roles.
 
