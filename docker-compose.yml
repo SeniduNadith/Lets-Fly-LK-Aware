@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: dynamicbiz-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 2003
+      MYSQL_DATABASE: dynamicbiz_security
+      MYSQL_USER: dynamicbiz_user
+      MYSQL_PASSWORD: 2003
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - dynamicbiz-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: dynamicbiz-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - dynamicbiz-network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  dynamicbiz-network:
+    driver: bridge
